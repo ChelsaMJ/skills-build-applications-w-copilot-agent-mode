@@ -7,6 +7,7 @@ import User from '../models/user.model';
 import Workout from '../models/workout.model';
 
 async function seedDatabase(): Promise<void> {
+  console.log('Seed the octofit_db database with test data');
   console.log('Seeding octofit_db with OctoFit Tracker test data');
   await connectDatabase();
 
