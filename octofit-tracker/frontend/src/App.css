@@ -1,0 +1,105 @@
+.app-shell {
+  max-width: 1080px;
+}
+
+.app-header {
+  border: 1px solid #d6deea;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 12% 20%, #f9d6ad 0%, transparent 36%),
+    radial-gradient(circle at 90% 80%, #c5ecf6 0%, transparent 42%),
+    #f8fbff;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.brand-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  border: 1px solid #d3dced;
+  background: white;
+  object-fit: contain;
+  padding: 0.35rem;
+}
+
+.brand-wrap h1 {
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  color: #19243a;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.brand-wrap p {
+  margin: 0.2rem 0 0;
+  color: #425572;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 0.5rem;
+}
+
+.nav-chip {
+  border-radius: 999px;
+  border: 1px solid #c8d4eb;
+  color: #1f3558;
+  background-color: #f5f9ff;
+  font-weight: 600;
+}
+
+.nav-chip.active {
+  background-color: #173a73;
+  border-color: #173a73;
+  color: #ffffff;
+}
+
+.content-wrap {
+  margin-top: 0.75rem;
+}
+
+.panel-card {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.panel-head h2 {
+  color: #1a2b48;
+}
+
+.status-text {
+  margin-bottom: 0;
+  color: #445266;
+}
+
+.table thead th {
+  color: #21395c;
+  border-bottom-color: #cfdae9;
+}
+
+.table tbody td {
+  color: #2b3748;
+}
+
+@media (max-width: 576px) {
+  .app-header {
+    padding: 1rem;
+  }
+
+  .brand-wrap {
+    align-items: flex-start;
+  }
+
+  .brand-logo {
+    width: 46px;
+    height: 46px;
+  }
+}
