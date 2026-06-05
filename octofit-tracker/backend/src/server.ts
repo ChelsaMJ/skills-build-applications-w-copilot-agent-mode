@@ -1,15 +1,19 @@
 import 'dotenv/config';
 import app from './app';
-import { API_PORT, getBaseUrl } from './config/base-url';
+import { API_PORT } from './config/base-url';
 import { connectDatabase } from './config/database';
 
 const port = API_PORT;
+const codespaceName = process.env.CODESPACE_NAME;
+const baseUrl = codespaceName
+  ? `https://${codespaceName}-${API_PORT}.app.github.dev`
+  : `http://localhost:${API_PORT}`;
 
 async function startServer(): Promise<void> {
   await connectDatabase();
 
   app.listen(port, () => {
-    console.log(`OctoFit backend listening at ${getBaseUrl()}`);
+    console.log(`OctoFit backend listening at ${baseUrl}`);
   });
 }
 
