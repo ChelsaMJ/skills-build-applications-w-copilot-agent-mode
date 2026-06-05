@@ -6,8 +6,8 @@ import { connectDatabase } from './config/database';
 const port = API_PORT;
 const codespaceName = process.env.CODESPACE_NAME;
 const baseUrl = codespaceName
-  ? `https://${codespaceName}-${API_PORT}.app.github.dev`
-  : `http://localhost:${API_PORT}`;
+  ? `https://${codespaceName}-8000.app.github.dev`
+  : 'http://localhost:8000';
 
 async function startServer(): Promise<void> {
   await connectDatabase();
