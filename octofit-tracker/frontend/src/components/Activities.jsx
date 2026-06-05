@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 
-const codespaceName = import.meta.env.VITE_CODESPACE_NAME
-const API_BASE = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev/api`
-  : 'http://localhost:8000/api'
+const browserHostname =
+  typeof window !== 'undefined' ? window.location.hostname : ''
+const API_ENDPOINT = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
+  : browserHostname.endsWith('.app.github.dev')
+    ? `https://${browserHostname.replace(/-\d+\.app\.github\.dev$/, '-8000.app.github.dev')}/api/activities/`
+  : 'http://localhost:8000/api/activities/'
 
 function extractCollection(payload) {
   if (Array.isArray(payload)) {
@@ -55,7 +58,7 @@ function Activities() {
       setError('')
 
       try {
-        const response = await fetch(`${API_BASE}/activities/`)
+        const response = await fetch(API_ENDPOINT)
 
         if (!response.ok) {
           throw new Error(`Activities request failed with ${response.status}`)
@@ -138,7 +141,7 @@ function Activities() {
       <div className="card-body p-4">
         <div className="panel-head mb-3">
           <h2 className="h4 mb-1">Activities</h2>
-          <p className="text-secondary mb-0">Fetched from {API_BASE}/activities/</p>
+          <p className="text-secondary mb-0">Fetched from {API_ENDPOINT}</p>
           <small className="text-muted">Records shown: {activities.length} / {total}</small>
         </div>
         {content}
