@@ -1,14 +1,14 @@
 import { Router } from 'express';
-import { getBaseUrl } from '../config/base-url';
+import { API_PORT, getBaseUrl } from '../config/base-url';
 
 const healthRouter = Router();
-const port = Number(process.env.PORT ?? 8000);
+const port = API_PORT;
 
 healthRouter.get('/', (_request, response) => {
   response.json({
     status: 'ok',
     service: 'octofit-tracker-backend',
-    baseUrl: getBaseUrl(port),
+    baseUrl: getBaseUrl(),
     port,
   });
 });
